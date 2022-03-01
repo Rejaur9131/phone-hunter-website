@@ -14,6 +14,7 @@ const loadPhones = () => {
 };
 const displayPhones = (phones) => {
   const searchResult = document.getElementById('search-result');
+  searchResult.textContent = '';
   for (const phone of phones) {
     const phoneElement = document.createElement('div');
     phoneElement.innerHTML = `    
@@ -45,22 +46,23 @@ const phoneDetails = (phone) => {
   // const keyFeatures = Object.entries(phone.mainFeatures);
   const { chipSet, displaySize, memory, storage, sensors } = phone.mainFeatures;
   const phoneDetails = document.getElementById('phone-details');
+  phoneDetails.textContent = '';
   const div = document.createElement('div');
   div.classList.add('card', 'mb-3');
   div.innerHTML = `
     <img src="${phone.image}" class="card-img-top" alt="..." />
     <div class="card-body">
-    <h5 class="card-title">Phone Name: ${phone.slug}</h5>                    
-    <h5 class="card-title text-muted">Brand: ${phone.brand}</h5>     
-    <p class="card-text text-danger fw-bold">Release Date: ${phone.releaseDate ? phone.releaseDate : 'Release date unavailable'}</p>
-    <p class="card-text fw-bold">Features:<br>
-          chipSet: ${chipSet}<br>
-          Storage: ${displaySize}<br>
-          Storage: ${memory}<br>
-          Storage: ${storage}<br>
-          Sensors: ${sensors}<br>
-
-    </p>
+    <h5 class="card-title">Phone Name: ${phone.slug}</h5> 
+    <p class="card-text text-danger fw-bold">Release Date: ${phone.releaseDate ? phone.releaseDate : 'Release date unavailable'}</p>                   
+    <h5 class="card-title text-muted">Brand: ${phone.brand}</h5>
+    <h5 class="card-text fw-bold">Features: </h5>
+    <ul>
+          <li>chipSet: ${chipSet}</li>
+          <li>Display: ${displaySize}</li>
+          <li>Memory: ${memory}</li>
+          <li>Storage: ${storage}</li>
+          <li>Sensors: ${sensors}</li>
+    </ul>
     </div>
   `;
   phoneDetails.appendChild(div);

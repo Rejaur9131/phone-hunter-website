@@ -8,7 +8,8 @@ const loadPhones = () => {
 
   searchField.value = '';
   toggleSpinner('block');
-  if (searchText === '') {
+
+  if (searchText == '') {
     alert('Please enter a search text');
   } else {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
@@ -53,6 +54,7 @@ const phoneDetails = (phone) => {
   const phoneDetails = document.getElementById('phone-details');
   phoneDetails.textContent = '';
   const { chipSet, displaySize, memory, storage, sensors } = phone.mainFeatures;
+  // const { WLAN, Bluetooth, GPS, NFC, Radio, USB } = phone.others;
   const div = document.createElement('div');
   div.classList.add('card');
   div.innerHTML = `
@@ -60,10 +62,11 @@ const phoneDetails = (phone) => {
     <div class="card-body">
     <h5 class="card-title">Phone Name: ${phone.slug}</h5> 
     <p class="card-text text-danger fw-bold">Release Date: ${phone.releaseDate ? phone.releaseDate : 'Release date unavailable'}</p>                   
+                  
     <h5 class="card-title text-muted">Brand: ${phone.brand}</h5>
     <h5 class="card-text fw-bold">Features: </h5>
     <ul>
-          <li>chipSet: ${chipSet}</li>
+          <li>ChipSet: ${chipSet}</li>
           <li>Display: ${displaySize}</li>
           <li>Memory: ${memory}</li>
           <li>Storage: ${storage}</li>

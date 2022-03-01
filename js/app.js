@@ -1,8 +1,13 @@
+const toggleSpinner = (displayStyle) => {
+  document.getElementById('spinner').style.display = displayStyle;
+};
+
 const loadPhones = () => {
   const searchField = document.getElementById('search-input');
   const searchText = searchField.value;
-  searchField.value = '';
 
+  searchField.value = '';
+  toggleSpinner('block');
   if (searchText === '') {
     alert('Please enter a search text');
   } else {
@@ -12,9 +17,11 @@ const loadPhones = () => {
       .then((data) => displayPhones(data.data));
   }
 };
+
 const displayPhones = (phones) => {
   const searchResult = document.getElementById('search-result');
   searchResult.textContent = '';
+
   for (const phone of phones) {
     const phoneElement = document.createElement('div');
     phoneElement.innerHTML = `    
@@ -31,6 +38,7 @@ const displayPhones = (phones) => {
     `;
     searchResult.appendChild(phoneElement);
   }
+  toggleSpinner('none');
 };
 
 const loadPhoneDetails = (id) => {
@@ -42,13 +50,11 @@ const loadPhoneDetails = (id) => {
 };
 
 const phoneDetails = (phone) => {
-  console.log(phone);
-  // const keyFeatures = Object.entries(phone.mainFeatures);
-  const { chipSet, displaySize, memory, storage, sensors } = phone.mainFeatures;
   const phoneDetails = document.getElementById('phone-details');
   phoneDetails.textContent = '';
+  const { chipSet, displaySize, memory, storage, sensors } = phone.mainFeatures;
   const div = document.createElement('div');
-  div.classList.add('card', 'mb-3');
+  div.classList.add('card');
   div.innerHTML = `
     <img src="${phone.image}" class="card-img-top" alt="..." />
     <div class="card-body">

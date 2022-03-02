@@ -35,7 +35,7 @@ const displayPhones = (phones) => {
                 </div>
                 <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-outline-success w-50 mx-auto mb-3" type="submit">Explore More -></button>
             </div>
-        </div>        
+        </div>               
     `;
     searchResult.appendChild(phoneElement);
   }
@@ -71,6 +71,14 @@ const phoneDetails = (phone) => {
           <li>Memory: ${memory}</li>
           <li>Storage: ${storage}</li>
           <li>Sensors: ${sensors}</li>
+    </ul>
+    <h5 class="card-text fw-bold">Others: </h5>
+    <ul> 
+          <li>WLAN: ${phone?.others?.WLAN ?? 'Not found'}</li>
+          <li>Bluetooth: ${phone?.others?.Bluetooth ?? 'Not found'}</li>
+          <li>GPS: ${phone?.others?.GPS ?? 'Not found'}</li>
+          <li>NFC: ${phone?.others?.NFC ?? 'Not found'}</li>
+          <li>USB: ${phone?.others?.USB ?? 'Not found'}</li>
     </ul>
     </div>
   `;

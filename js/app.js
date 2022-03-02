@@ -54,7 +54,7 @@ const phoneDetails = (phone) => {
   const phoneDetails = document.getElementById('phone-details');
   phoneDetails.textContent = '';
   const { chipSet, displaySize, memory, storage, sensors } = phone.mainFeatures;
-  // const { WLAN, Bluetooth, GPS, NFC, Radio, USB } = phone.others;
+
   const div = document.createElement('div');
   div.classList.add('card');
   div.innerHTML = `
